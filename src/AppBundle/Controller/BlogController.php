@@ -34,7 +34,7 @@ class BlogController extends Controller
 
         // ...
         return new Response(
-            '<html><body> SHOW ACTION</body></html>'
+            '<html><body> SHOW ACTION '.$slug.'</body></html>'
         );        
     }
 }
