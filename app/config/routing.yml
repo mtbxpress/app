@@ -1,0 +1,20 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation 
+
+blog_list:
+    path:      /blog/{page}
+    defaults:  { _controller: AppBundle:Blog:list, page: 1 }
+    requirements:
+        page: '\d+'
+
+blog_show:
+    path:     /blog/{slug}
+    defaults: { _controller: AppBundle:Blog:show }
+
+
+blog2_list:
+    path:      /blog/{page}
+    defaults:  { _controller: AppBundle:Blog:list, page: 1 }
+    requirements:
+        page: '\d+'  
