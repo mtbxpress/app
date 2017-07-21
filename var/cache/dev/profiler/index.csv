@@ -235,3 +235,16 @@ bca2d0,127.0.0.1,GET,http://localhost:8000/blog/k,1500549527,,500
 6bf3f2,127.0.0.1,GET,http://localhost:8000/blog/k,1500549557,,200
 559150,127.0.0.1,GET,http://localhost:8000/blog/fffff,1500549564,,200
 766eda,127.0.0.1,GET,http://localhost:8000/blog/1,1500549572,,200
+ce2a7d,127.0.0.1,GET,http://localhost:8000/blog,1500550075,,200
+5156be,127.0.0.1,GET,http://localhost:8000/blog,1500550314,,200
+147bde,127.0.0.1,GET,http://localhost:8000/blog/5,1500550325,,200
+954f64,127.0.0.1,GET,http://localhost:8000/blog/f,1500550331,,200
+e355ab,127.0.0.1,GET,http://localhost:8000/lucky/number/100,1500550666,1a7671,200
+1a7671,127.0.0.1,GET,http://localhost:8000/lucky/number/100,1500550666,,404
+ef0187,127.0.0.1,GET,http://localhost:8000/lucky/number/100,1500550681,547931,200
+547931,127.0.0.1,GET,http://localhost:8000/lucky/number/100,1500550681,,404
+1997c1,127.0.0.1,GET,http://localhost:8000/lucky/number/,1500550685,f8f83b,200
+f8f83b,127.0.0.1,GET,http://localhost:8000/lucky/number/,1500550685,,404
+f0e1f6,127.0.0.1,GET,http://localhost:8000/lucky/number,1500550688,,200
+3a77dc,127.0.0.1,GET,http://localhost:8000/lucky/number,1500550689,,200
+bb01ce,127.0.0.1,GET,http://localhost:8000/blog/listougbo,1500638813,,200

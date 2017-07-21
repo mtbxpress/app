@@ -114,9 +114,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         elseif (0 === strpos($pathinfo, '/blog')) {
-            // blog2_read
-            if (0 === strpos($pathinfo, '/blogs') && preg_match('#^/blogs/(?P<title>\\S+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog2_read')), array (  '_controller' => 'AppBundle\\Controller\\BlogsController::readAction',));
+            if (0 === strpos($pathinfo, '/blogs')) {
+                // blog2_list
+                if (preg_match('#^/blogs(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog2_list')), array (  'page' => 1,  '_controller' => 'AppBundle\\Controller\\BlogsController::listAction',));
+                }
+
+                // blog2_read
+                if (preg_match('#^/blogs/(?P<title>\\S+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog2_read')), array (  '_controller' => 'AppBundle\\Controller\\BlogsController::readAction',));
+                }
+
             }
 
             // blog_list
@@ -127,11 +135,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // blog_show
             if (preg_match('#^/blog/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_show')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::showAction',));
-            }
-
-            // blog2_list
-            if (preg_match('#^/blog(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog2_list')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::listAction',  'page' => 1,));
             }
 
         }
