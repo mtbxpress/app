@@ -113,6 +113,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/articles')) {
+            // app_article_show
+            if (preg_match('#^/articles/(?P<_locale>en|fr)/(?P<year>\\d+)/(?P<slug>[^/\\.]++)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'app_article_show')), array (  '_format' => 'html',  '_controller' => 'AppBundle\\Controller\\ArticleController::showAction',));
+            }
+
+            // article_show
+            if (preg_match('#^/articles/(?P<_locale>en|fr)/(?P<year>\\d+)/(?P<slug>[^/\\.]++)(?:\\.(?P<_format>html|rss))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_show')), array (  '_controller' => 'AppBundle\\Controller\\ArticleController::showAction',  '_format' => 'html',));
+            }
+
+        }
+
         elseif (0 === strpos($pathinfo, '/blog')) {
             if (0 === strpos($pathinfo, '/blogs')) {
                 // blog2_list
@@ -156,6 +169,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // app_lucky_number
         if ('/lucky/number' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\LuckyController::numberAction',  '_route' => 'app_lucky_number',);
+        }
+
+        // prueba_show
+        if (0 === strpos($pathinfo, '/prueba') && preg_match('#^/prueba/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'prueba_show')), array (  '_controller' => 'AppBundle\\Controller\\PruebaController::showAction',));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
