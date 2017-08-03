@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Symfony!</title>
+    </head>
+    <body>
+        <h1>EMPRESAS</h1>
+
+        <ul id="empresas">
+            {% for empresa in empresas %}
+                <li>{{ empresa.nombreEmpresa }} || {{ empresa.ciudadEmpresa }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

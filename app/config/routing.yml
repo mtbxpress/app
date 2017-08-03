@@ -23,3 +23,7 @@ article_show:
       _locale:  en|fr
       _format:  html|rss
       year:     \d+
+
+empresa_mostrarAll:
+    path:      /empresas
+    defaults:  { _controller: AppBundle:Empresa:listarTodas}

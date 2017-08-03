@@ -176,6 +176,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'prueba_show')), array (  '_controller' => 'AppBundle\\Controller\\PruebaController::showAction',));
         }
 
+        // empresa_mostrarAll
+        if ('/empresas' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarTodasAction',  '_route' => 'empresa_mostrarAll',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
