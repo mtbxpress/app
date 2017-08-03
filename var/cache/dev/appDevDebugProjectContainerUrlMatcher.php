@@ -183,8 +183,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             // empresa_mostrarUna
-            if (preg_match('#^/empresa(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'empresa_mostrarUna')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarUnaAction',  'page' => 1,));
+            if (preg_match('#^/empresa(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'empresa_mostrarUna')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarUnaAction',  'id' => 1,));
             }
 
         }

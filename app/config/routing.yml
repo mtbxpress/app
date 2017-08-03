@@ -29,7 +29,7 @@ empresa_mostrarAll:
     defaults:  { _controller: AppBundle:Empresa:listarTodas}
 
 empresa_mostrarUna:
-    path:      /empresa/{page}
-    defaults:  { _controller: AppBundle:Empresa:listarUna, page: 1 }    
+    path:      /empresa/{id}
+    defaults:  { _controller: AppBundle:Empresa:listarUna, id: 1 }    
     requirements:
-        page: '\d+'    
+        id: '\d+'    

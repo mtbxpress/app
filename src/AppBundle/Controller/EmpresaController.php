@@ -22,13 +22,13 @@ class EmpresaController extends Controller
     }
 
 
-    public function listarUnaAction($page = 1) 
+    public function listarUnaAction($id = 1) 
     {
         $repositorio = $this->getDoctrine()->getRepository('AppBundle:Empresa');
-        $empresa = $repositorio->find($page);
+        $empresa = $repositorio->find($id);
         if (!$empresa) {
             throw $this->createNotFoundException(
-                'No se encuentra la empresa con id = '.$page
+                'No se encuentra la empresa con id = '.$id
             );
         }
         else{
