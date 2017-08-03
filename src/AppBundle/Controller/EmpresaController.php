@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EmpresaController extends Controller
 {
     /**
-     * @Route("/empresa", name="empresa_mostrarAll")
+     * @Route("/empresas", name="empresa_mostrarAll")
      */
     public function listarTodasAction() 
     {
@@ -20,4 +20,24 @@ class EmpresaController extends Controller
 
         return $this->render('empresa/mostrarAllEmp.html.twig',array("empresas"=>$empresas));          
     }
+
+
+    public function listarUnaAction($page = 1) 
+    {
+        $repositorio = $this->getDoctrine()->getRepository('AppBundle:Empresa');
+        $empresa = $repositorio->find($page);
+        if (!$empresa) {
+            throw $this->createNotFoundException(
+                'No se encuentra la empresa con id = '.$page
+            );
+        }
+        else{
+            return $this->render('empresa/mostrarUnaEmp.html.twig',array("empresa"=>$empresa));          
+        }
+
+/*        return new Response(
+            '<html><body>LIST ACTION '.$id.'</body></html>'
+        );        
+*/
+    }    
 }

@@ -176,9 +176,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'prueba_show')), array (  '_controller' => 'AppBundle\\Controller\\PruebaController::showAction',));
         }
 
-        // empresa_mostrarAll
-        if ('/empresas' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarTodasAction',  '_route' => 'empresa_mostrarAll',);
+        if (0 === strpos($pathinfo, '/empresa')) {
+            // empresa_mostrarAll
+            if ('/empresas' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarTodasAction',  '_route' => 'empresa_mostrarAll',);
+            }
+
+            // empresa_mostrarUna
+            if (preg_match('#^/empresa(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'empresa_mostrarUna')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::listarUnaAction',  'page' => 1,));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

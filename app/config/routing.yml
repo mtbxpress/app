@@ -27,3 +27,9 @@ article_show:
 empresa_mostrarAll:
     path:      /empresas
     defaults:  { _controller: AppBundle:Empresa:listarTodas}
+
+empresa_mostrarUna:
+    path:      /empresa/{page}
+    defaults:  { _controller: AppBundle:Empresa:listarUna, page: 1 }    
+    requirements:
+        page: '\d+'    
