@@ -32,4 +32,20 @@ empresa_mostrarUna:
     path:      /empresa/{id}
     defaults:  { _controller: AppBundle:Empresa:listarUna, id: 1 }    
     requirements:
-        id: '\d+'    
+        id: '\d+'   
+
+empresa_nombreEmpresa:
+    path:      /nombre
+    defaults:  { _controller: AppBundle:Empresa:nombreEmpresa}        
+
+mensaje:
+    path:     /mensaje/{men}
+    defaults: { _controller: AppBundle:Empresa:mensaje, men: '' }    
+
+contactar:
+    path:     /contactar/{marca}
+    defaults: { _controller: AppBundle:Empresa:contactar, marca: 'nike' }   
+
+contactarAdidass:
+    path:     /contactarAdidas
+    defaults: { _controller: AppBundle:Empresa:contactarAdidas}        

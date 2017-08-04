@@ -189,6 +189,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // empresa_nombreEmpresa
+        if ('/nombre' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::nombreEmpresaAction',  '_route' => 'empresa_nombreEmpresa',);
+        }
+
+        // mensaje
+        if (0 === strpos($pathinfo, '/mensaje') && preg_match('#^/mensaje(?:/(?P<men>[^/]++))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mensaje')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::mensajeAction',  'men' => '',));
+        }
+
+        if (0 === strpos($pathinfo, '/contactar')) {
+            // contactar
+            if (preg_match('#^/contactar(?:/(?P<marca>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'contactar')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::contactarAction',  'marca' => 'nike',));
+            }
+
+            // contactarAdidass
+            if ('/contactarAdidas' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::contactarAdidasAction',  '_route' => 'contactarAdidass',);
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
