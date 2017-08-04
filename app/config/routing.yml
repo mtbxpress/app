@@ -53,3 +53,22 @@ contactarAdidasss:
 empresa_crear:
     path:      /crear_empresa
     defaults:  { _controller: AppBundle:Empresa:crearEmpresa}      
+
+empresa_buscar:
+    path:      /buscar_empresa/{id}
+    defaults:  { _controller: AppBundle:Empresa:buscarEmpresa, id: 1}  
+
+empresa_buscarNombre:
+    path:      /buscar_empresa_nombre/{nombre}
+    defaults:  { _controller: AppBundle:Empresa:buscarEmpresaPorNombre, nombre: 'assics'}        
+
+empresa_crearEmpFormulario:
+    path:      /form_crear
+    defaults:  { _controller: AppBundle:Empresa:crearEmpresaFormulario }    
+
+empresa_recuperarValoresFormulario:
+    path:      /crear_empresa_form
+    defaults:  { _controller: AppBundle:Empresa:recuperarValoresFormulario } 
+
+
+            

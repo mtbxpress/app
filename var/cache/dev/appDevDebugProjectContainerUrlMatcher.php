@@ -152,6 +152,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/buscar_empresa')) {
+            // empresa_buscar
+            if (preg_match('#^/buscar_empresa(?:/(?P<id>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'empresa_buscar')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::buscarEmpresaAction',  'id' => 1,));
+            }
+
+            // empresa_buscarNombre
+            if (0 === strpos($pathinfo, '/buscar_empresa_nombre') && preg_match('#^/buscar_empresa_nombre(?:/(?P<nombre>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'empresa_buscarNombre')), array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::buscarEmpresaPorNombreAction',  'nombre' => 'assics',));
+            }
+
+        }
+
         // homepage
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {
@@ -212,9 +225,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // empresa_crear
-        if ('/crear_empresa' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::crearEmpresaAction',  '_route' => 'empresa_crear',);
+        elseif (0 === strpos($pathinfo, '/crear_empresa')) {
+            // empresa_crear
+            if ('/crear_empresa' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::crearEmpresaAction',  '_route' => 'empresa_crear',);
+            }
+
+            // empresa_recuperarValoresFormulario
+            if ('/crear_empresa_form' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::recuperarValoresFormularioAction',  '_route' => 'empresa_recuperarValoresFormulario',);
+            }
+
+        }
+
+        // empresa_crearEmpFormulario
+        if ('/form_crear' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\EmpresaController::crearEmpresaFormularioAction',  '_route' => 'empresa_crearEmpFormulario',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Empresa;
+use AppBundle\Form\EmpresaType;
+
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 class EmpresaController extends Controller
@@ -87,10 +91,57 @@ class EmpresaController extends Controller
 
             //MOSTRAR LA EMPRESA RECIEN CREADA
             return $this->render('empresa/mostrarUnaEmp.html.twig',array("empresa"=>$empresa));
-            
+
             //MOSTRAR TODAS LAS EMPRESAS
           /*  $empresas = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findAll();
             return $this->render('empresa/mostrarAllEmp.html.twig',array("empresas"=>$empresas));   
             */         
-        }                             
+        }  
+        public function buscarEmpresaAction($id){
+
+            $empresa = $this->getDoctrine()->getRepository('AppBundle:Empresa')->find($id);
+
+            return $this->render('empresa/mostrarUnaEmp.html.twig',array("empresa"=>$empresa));
+        }  
+
+        public function buscarEmpresaPorNombreAction($nombre){
+
+            $empresa = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findOneByNombreEmpresa($nombre);
+
+    //        $empresa = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findOneByCiudadEmpresa($nombre);   findOneById ....       
+
+            return $this->render('empresa/mostrarUnaEmp.html.twig',array("empresa"=>$empresa));
+        }   
+
+        public function crearEmpresaFormularioAction(){
+   
+            $form = $this->createForm(EmpresaType::class);
+            return $this->render('empresa/formCrear.html.twig',array('form'=>$form->createView())); //SI PONGO array("$form"=> DOBLES COMILLAS DA ERROR
+        }  
+
+        public function recuperarValoresFormularioAction(Request $request){
+
+            $empresa = new Empresa();
+            $form =$this->createForm(EmpresaType::class,$empresa);
+
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+
+                // $form->getData() holds the submitted values
+                // but, the original `$task` variable has also been updated
+                $empresa = $form->getData();
+
+                // ... perform some action, such as saving the task to the database
+                // for example, if Task is a Doctrine entity, save it!
+                 $em = $this->getDoctrine()->getManager();
+                 $em->persist($empresa);
+                 $em->flush();
+
+                 echo "EXITO";
+             //    return $this->redirectToRoute('index.php');
+
+            }
+            return $this->render('empresa/formCrear.html.twig',array('form'=>$form->createView()));            
+
+        }                                                           
 }
