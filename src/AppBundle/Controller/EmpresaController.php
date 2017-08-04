@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Empresa;
 
 
 class EmpresaController extends Controller
@@ -54,7 +55,7 @@ class EmpresaController extends Controller
 
         public function contactarAction($marca){
             if($marca == 'adidas'){
-                return $this->redirect($this->generateUrl('contactarAdidass'));
+                return $this->redirect($this->generateUrl('contactarAdidasss'));
             }
             elseif ($marca == 'nike') {
                 return $this->redirect('http://www.nike.es');
@@ -69,5 +70,27 @@ class EmpresaController extends Controller
         }   
         public function contactarAdidasAction(){
             return $this->render('empresa/contactarAdidas.html.twig');
-        }                            
+        }        
+
+        public function crearEmpresaAction(){
+
+            //objeto tipo empresa
+            $empresa = new Empresa();
+            $empresa->setNombreEmpresa("Assics");
+            $empresa->setCiudadEmpresa("Suiza");
+            $empresa->setFechaInsercion(new \DateTime("now"));
+            $empresa->setComentarioEmpresa("Comentario assics");
+            //doctrine
+            $managerDoctrine = $this->getDoctrine()->getManager();
+            $managerDoctrine->persist($empresa);
+            $managerDoctrine->flush($empresa);
+
+            //MOSTRAR LA EMPRESA RECIEN CREADA
+            return $this->render('empresa/mostrarUnaEmp.html.twig',array("empresa"=>$empresa));
+            
+            //MOSTRAR TODAS LAS EMPRESAS
+          /*  $empresas = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findAll();
+            return $this->render('empresa/mostrarAllEmp.html.twig',array("empresas"=>$empresas));   
+            */         
+        }                             
 }

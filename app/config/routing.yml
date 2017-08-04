@@ -46,6 +46,10 @@ contactar:
     path:     /contactar/{marca}
     defaults: { _controller: AppBundle:Empresa:contactar, marca: 'nike' }   
 
-contactarAdidass:
+contactarAdidasss:
     path:     /contactarAdidas
     defaults: { _controller: AppBundle:Empresa:contactarAdidas}        
+
+empresa_crear:
+    path:      /crear_empresa
+    defaults:  { _controller: AppBundle:Empresa:crearEmpresa}      

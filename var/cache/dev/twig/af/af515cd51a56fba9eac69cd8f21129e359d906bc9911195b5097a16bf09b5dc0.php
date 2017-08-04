@@ -15,11 +15,11 @@ class __TwigTemplate_ab8c61537c428bfa9df721d5d46fa298d52c1a8d2ae24ed12238006a4d6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_48de6b2ea7d5f5553bd1a7ee1bb490fd01b50d1120d2271063b0c331351774a6 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_48de6b2ea7d5f5553bd1a7ee1bb490fd01b50d1120d2271063b0c331351774a6->enter($__internal_48de6b2ea7d5f5553bd1a7ee1bb490fd01b50d1120d2271063b0c331351774a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "empresa/mostrarUnaEmp.html.twig"));
+        $__internal_5de9ad3e0b4c133766137c1ad2d6f6c373083d4573f2aa7ea9449453c5ad6565 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_5de9ad3e0b4c133766137c1ad2d6f6c373083d4573f2aa7ea9449453c5ad6565->enter($__internal_5de9ad3e0b4c133766137c1ad2d6f6c373083d4573f2aa7ea9449453c5ad6565_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "empresa/mostrarUnaEmp.html.twig"));
 
-        $__internal_a436db77b173ee9334c963eeecae2b464c8fd32debe9a972895f3a936221b551 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a436db77b173ee9334c963eeecae2b464c8fd32debe9a972895f3a936221b551->enter($__internal_a436db77b173ee9334c963eeecae2b464c8fd32debe9a972895f3a936221b551_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "empresa/mostrarUnaEmp.html.twig"));
+        $__internal_706b2dbe97c344c20b3040d9deeb43e741def152552497f1f11b64a94307f969 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_706b2dbe97c344c20b3040d9deeb43e741def152552497f1f11b64a94307f969->enter($__internal_706b2dbe97c344c20b3040d9deeb43e741def152552497f1f11b64a94307f969_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "empresa/mostrarUnaEmp.html.twig"));
 
         // line 1
         echo "
@@ -43,15 +43,17 @@ class __TwigTemplate_ab8c61537c428bfa9df721d5d46fa298d52c1a8d2ae24ed12238006a4d6
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["empresa"]) ? $context["empresa"] : $this->getContext($context, "empresa")), "nombreEmpresa", array()), "html", null, true);
         echo " || ";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["empresa"]) ? $context["empresa"] : $this->getContext($context, "empresa")), "ciudadEmpresa", array()), "html", null, true);
+        echo " || ";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["empresa"]) ? $context["empresa"] : $this->getContext($context, "empresa")), "id", array()), "html", null, true);
         echo "</li>
         </ul>
     </body>
 </html>";
         
-        $__internal_48de6b2ea7d5f5553bd1a7ee1bb490fd01b50d1120d2271063b0c331351774a6->leave($__internal_48de6b2ea7d5f5553bd1a7ee1bb490fd01b50d1120d2271063b0c331351774a6_prof);
+        $__internal_5de9ad3e0b4c133766137c1ad2d6f6c373083d4573f2aa7ea9449453c5ad6565->leave($__internal_5de9ad3e0b4c133766137c1ad2d6f6c373083d4573f2aa7ea9449453c5ad6565_prof);
 
         
-        $__internal_a436db77b173ee9334c963eeecae2b464c8fd32debe9a972895f3a936221b551->leave($__internal_a436db77b173ee9334c963eeecae2b464c8fd32debe9a972895f3a936221b551_prof);
+        $__internal_706b2dbe97c344c20b3040d9deeb43e741def152552497f1f11b64a94307f969->leave($__internal_706b2dbe97c344c20b3040d9deeb43e741def152552497f1f11b64a94307f969_prof);
 
     }
 
@@ -93,7 +95,7 @@ class __TwigTemplate_ab8c61537c428bfa9df721d5d46fa298d52c1a8d2ae24ed12238006a4d6
     <body>
 \t<h3>Mostrar una Empresa</h3>
         <ul id=\"empresa\">
-            <li>{{ empresa.nombreEmpresa }} || {{ empresa.ciudadEmpresa }}</li>
+            <li>{{ empresa.nombreEmpresa }} || {{ empresa.ciudadEmpresa }} || {{ empresa.id }}</li>
         </ul>
     </body>
 </html>", "empresa/mostrarUnaEmp.html.twig", "/var/www/html/app/app/app/Resources/views/empresa/mostrarUnaEmp.html.twig");
