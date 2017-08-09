@@ -20,6 +20,12 @@ class Empresa
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    //RELACION CON OFERTA, UNA EMPRESA MUCHAS OFERTAS, UNA OFERTA UNA EMPRESA
+    /** 
+     * @ORM\OneToMany(targetEntity="oferta", mappedBy="empresa")
+     */
+    private $oferta;
 
     /**
      * @var string
@@ -131,5 +137,28 @@ class Empresa
     {
         return $this->fechaInsercion;
     }
-}
 
+    /**
+     * Set comentarioEmpresa
+     *
+     * @param string $comentarioEmpresa
+     *
+     * @return Empresa
+     */
+    public function setComentarioEmpresa($comentarioEmpresa)
+    {
+        $this->comentarioEmpresa = $comentarioEmpresa;
+
+        return $this;
+    }
+
+    /**
+     * Get comentarioEmpresa
+     *
+     * @return string
+     */
+    public function getComentarioEmpresa()
+    {
+        return $this->comentarioEmpresa;
+    }
+}

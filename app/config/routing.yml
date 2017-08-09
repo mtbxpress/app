@@ -70,5 +70,9 @@ empresa_recuperarValoresFormulario:
     path:      /crear_empresa_form
     defaults:  { _controller: AppBundle:Empresa:recuperarValoresFormulario } 
 
+empresa_nuevo:
+    path:      /crear_empresa_cont
+    defaults:  { _controller: AppBundle:Empresa:empresaCont } 
+
 
             

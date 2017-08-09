@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Empresa;
 use AppBundle\Form\EmpresaType;
 
+//use AppBundle\Entity\Empresa;
+
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -126,22 +128,27 @@ class EmpresaController extends Controller
 
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()){
-
                 // $form->getData() holds the submitted values
                 // but, the original `$task` variable has also been updated
-                $empresa = $form->getData();
+                $empresa = $form->getData();            
 
                 // ... perform some action, such as saving the task to the database
                 // for example, if Task is a Doctrine entity, save it!
                  $em = $this->getDoctrine()->getManager();
-                 $em->persist($empresa);
-                 $em->flush();
 
+                 $em->persist($empresa);                 
+                 $em->flush();
                  echo "EXITO";
              //    return $this->redirectToRoute('index.php');
 
             }
             return $this->render('empresa/formCrear.html.twig',array('form'=>$form->createView()));            
 
-        }                                                           
+        }        
+
+        public function empresaContAction(){
+            return new Response('<html><head></head><body>mensajee: </body></html>'); 
+        }
+
+                                                        
 }

@@ -22,7 +22,13 @@ class EmpresaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombreEmpresa',TextType::class)
-                ->add('ciudadEmpresa')
+                ->add('ciudadEmpresa',TextType::class,
+                        array('label'=>'Ciudad de la empresa',
+                              'data' => 'texto por defecto', 
+                              'required'   => true,
+                              'empty_data' => 'John Doe',
+                              'label_attr'=> array('class'=>'etiquetaParaCSS'),
+                                            'attr'=>array('class'=>'tinymce'))) //hay que especificar antes el tipo de datos antes que la etiqueta
                 ->add('comentarioEmpresa')
                 ->add('fechaInsercion',DateTimeType::class)
                 ->add('Aceptar',SubmitType::class)

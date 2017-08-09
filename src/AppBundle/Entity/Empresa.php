@@ -20,6 +20,12 @@ class Empresa
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    //RELACION CON OFERTA, UNA EMPRESA MUCHAS OFERTAS, UNA OFERTA UNA EMPRESA
+    /** 
+     * @ORM\OneToMany(targetEntity="oferta", mappedBy="empresa")
+     */
+  //  private $oferta;
 
     /**
      * @var string
@@ -154,5 +160,46 @@ class Empresa
     public function getComentarioEmpresa()
     {
         return $this->comentarioEmpresa;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->oferta = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ofertum
+     *
+     * @param \AppBundle\Entity\oferta $ofertum
+     *
+     * @return Empresa
+     */
+    public function addOfertum(\AppBundle\Entity\oferta $ofertum)
+    {
+        $this->oferta[] = $ofertum;
+
+        return $this;
+    }
+
+    /**
+     * Remove ofertum
+     *
+     * @param \AppBundle\Entity\oferta $ofertum
+     */
+    public function removeOfertum(\AppBundle\Entity\oferta $ofertum)
+    {
+        $this->oferta->removeElement($ofertum);
+    }
+
+    /**
+     * Get oferta
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOferta()
+    {
+        return $this->oferta;
     }
 }
