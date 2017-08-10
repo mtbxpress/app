@@ -25,7 +25,7 @@ class Empresa
     /** 
      * @ORM\OneToMany(targetEntity="oferta", mappedBy="empresa")
      */
-  //  private $oferta;
+    private $oferta;
 
     /**
      * @var string
